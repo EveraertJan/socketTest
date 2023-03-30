@@ -1,0 +1,16 @@
+version: "3.8"
+
+services:
+  
+
+  manager:
+    build: .
+    image: "$OWNER/socketmanager:$VERSION"
+    command: ["npm", "run", "start"]
+    ports:
+      - 8080:3000
+      - 80:3001
+    restart: always
+    volumes:
+      - ./src:/usr/app/src
+

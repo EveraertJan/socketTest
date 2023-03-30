@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+
+
+
+<body>
+  <div id="container">
+    <input type="text" id="textInput" />
+    <button class="CTA" id="taskSend">Send as task</button>
+    <button class="CTA" id="messageSend">Send as message</button>
+  </div>
+</body>
+<script>
+  document.getElementById("taskSend").addEventListener("click", (e) => {
+    const task = document.getElementById("textInput").value;
+    fetch("http://localhost:8080/todo?message=" + task)
+      .then(r => r.json())
+      .then((d) => console.log(d));
+  })
+  document.getElementById("messageSend").addEventListener("click", (e) => {
+    const task = document.getElementById("textInput").value;
+    fetch("http://localhost:8080/message?message=" + task)
+      .then(r => r.json())
+      .then((d) => console.log(d));
+  })
+</script>
+</html>
